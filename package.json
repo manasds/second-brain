@@ -26,5 +26,9 @@
     "prisma": "^6.18.0",
     "tailwindcss": "^4",
     "typescript": "^5"
+  },
+  "optionalDependencies": {
+    "@tailwindcss/oxide-linux-x64-gnu": "^4.1.11",
+    "lightningcss-linux-x64-gnu": "^1.29.0"
   }
 }
