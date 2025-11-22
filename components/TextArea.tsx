@@ -2,11 +2,11 @@
 import { useRef, useState } from "react"
 import { updatetext } from "@/actions/updatetext";
 export default function TextArea({content , id} : {content : string , id:string}){
-   const inputref = useRef(null) ;
+   const inputref = useRef<HTMLTextAreaElement>(null) ;
    const [loading , setloading] = useState(false);
    async function handleclick(){
       setloading(true)
-      const res = await updatetext(inputref.current?.value, id);
+      const res = await updatetext(inputref.current?.value || "", id);
       if(res.success){
          console.log("added successfully")
       }else{

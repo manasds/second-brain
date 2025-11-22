@@ -6,6 +6,9 @@ import LoginButton from "@/components/LoginButton";
 import { client } from "@/lib/prisma";
 import { IoShareSocialOutline } from "react-icons/io5";
 import { FaPlus } from "react-icons/fa";
+
+type Memory = Awaited<ReturnType<typeof client.memory.findMany>>[0];
+
 export default async function Home() {
   const session = await auth.api.getSession({
     headers: await headers(),
@@ -40,7 +43,7 @@ export default async function Home() {
             link="https://www.youtube.com/embed/d5x0JCZbAJs?si=DIoAufsSRBT6LNOt"
             tags={["tech", "theo", "react"]}
           /> */}
-          {cards.map((card) => (
+          {cards.map((card: Memory) => (
             <Card
               id = {card.id}
               title={card.title}
