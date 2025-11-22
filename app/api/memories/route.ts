@@ -14,6 +14,6 @@ import {client} from "@/lib/prisma";
             where : {userId} ,
             orderBy : {createdAt : "desc"} ,
         })
-
+    
         return NextResponse.json(memories);
     }
