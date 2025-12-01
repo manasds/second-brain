@@ -10,7 +10,7 @@ export const auth = betterAuth({
     google :{
       clientId: process.env.GOOGLE_CLIENT_ID!,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
-      redirectURI : "http://localhost:3000/api/auth/callback/google"
+      redirectURI : "https://second-brain-owhy.vercel.app/api/auth/callback/google"
     },
   } ,
   debug: true,
