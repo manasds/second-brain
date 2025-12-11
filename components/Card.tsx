@@ -12,8 +12,8 @@ export default function Card({title , content , link , tags , id} : Cardprops){
             <div className="flex flex-col justify-between  h-full">
                 <div className="h-14 w-full  text-lg p-3 font-semibold">{title}</div>
                 <div className="w-full h-72 flex justify-between gap-1 p-1">
-                    <div className="flex-1 min-w-0  px-3 rounded-md shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
-                        <h4 className="text-sm font-medium py-1.5">Notes</h4>
+                    <div className="flex-1 min-w-0  px-3 rounded-md shadow-[0_3px_10px_rgb(0,0,0,0.2)] pt-8">
+                
                         <TextArea content={content} id={id} />
                     </div>
                     <div className="w-[345px] min-w-0  px-2 aspect-video overflow-hidden ">

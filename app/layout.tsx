@@ -31,7 +31,7 @@ export default async function RootLayout({
     return (
       <html lang="en">
         <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased flex min-h-screen bg-neutral-100`}
+          className={`${geistSans.variable} ${geistMono.variable} antialiased flex min-h-screen bg-neutral-100 relative`}
         >
           <Sidebar />
           <main className="flex-1 overflow-y-auto">{children}</main>

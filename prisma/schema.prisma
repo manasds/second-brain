@@ -7,7 +7,11 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
-
+enum ContentType {
+  video
+  tweet
+  link
+}
 model User {
   id            String    @id
   name          String
@@ -76,11 +80,11 @@ model Memory {
   tags       String[]  @default([]) 
   createdAt  DateTime  @default(now())
   updatedAt  DateTime  @default(now()) @updatedAt
-
+  type       ContentType?
   //relation 
   user       User      @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId     String
-
+  
   // indexes
   @@index([userId, createdAt])
   @@index([userId, title])
