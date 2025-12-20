@@ -9,25 +9,26 @@ export async function addmemory(formdata: FormFields) {
   if (!session) {
     throw new Error("Not authenticated");
   }
-  function convertToYouTubeEmbed(link : string) {
-    const regex = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/|youtube\.com\/shorts\/)([^"&?\/\s]{11})/i;
-    
+  function convertToYouTubeEmbed(link: string) {
+    const regex =
+      /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/|youtube\.com\/shorts\/)([^"&?\/\s]{11})/i;
+
     const match = link.match(regex);
 
     if (match && match[1]) {
-        const videoId = match[1];
-        return `https://www.youtube.com/embed/${videoId}`;
+      const videoId = match[1];
+      return `https://www.youtube.com/embed/${videoId}`;
     }
 
     return null;
-}
+  }
   const userId = session.user.id;
   const validated = memoryschema.safeParse(formdata);
   if (!validated.success) {
     throw new Error("invalid form data");
   }
   const { title, description, link, type, tags } = validated.data;
-  const url = convertToYouTubeEmbed(link) ;
+  const url = convertToYouTubeEmbed(link);
   const tagslist = tags
     .split(",")
     .map((tag) => tag.trim())
@@ -39,7 +40,7 @@ export async function addmemory(formdata: FormFields) {
         content: description.trim(),
         link: url || null,
         tags: tagslist,
-        type: type,
+        type,
         userId,
       },
     });
@@ -50,7 +51,7 @@ export async function addmemory(formdata: FormFields) {
   }
 }
 
-export async function deletememory(id : string) {
+export async function deletememory(id: string) {
   const session = await auth.api.getSession({ headers: await headers() });
   if (!session) {
     throw new Error("Not authenticated");
@@ -58,13 +59,10 @@ export async function deletememory(id : string) {
   const userId = session.user.id;
   try {
     await client.memory.delete({
-      where : {userId ,
-      id ,
-      }
-    })
-  }
-  catch(error) {
-     console.error(error.message);
-     throw new Error("deletion failed");
+      where: { userId, id },
+    });
+  } catch (error) {
+    console.error(error.message);
+    throw new Error("deletion failed");
   }
 }

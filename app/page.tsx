@@ -34,6 +34,7 @@ export default async function Home() {
           />  */}
           {cards.map((card: Memory) => (
             <Card
+              key = {card.id} 
               id={card.id}
               title={card.title}
               content={card.content}
