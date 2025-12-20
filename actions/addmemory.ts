@@ -62,7 +62,7 @@ export async function deletememory(id: string) {
       where: { userId, id },
     });
   } catch (error) {
-    console.error(error.message);
+    console.error(error instanceof Error ? error.message : "deletion failed");
     throw new Error("deletion failed");
   }
 }

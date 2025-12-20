@@ -22,7 +22,7 @@ function Deletebutton({id} : {id : string}) {
             await deletememory(id) ;
             router.refresh() ;
         } catch(e){
-            console.log(e.message)
+            console.log(e instanceof Error ? e.message : "Failed to delete memory")
         }
     }
  return (
