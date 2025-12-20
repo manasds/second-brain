@@ -34,7 +34,7 @@ function Form({setisOpen} : {setisOpen : (arg : boolean ) => void }) {
      }
   }
   return (
-    <div className="h-full flex flex-col p-1 bg-neutral-200">
+    <div className="h-full flex flex-col p-1 bg-neutral-200 rounded-lg">
       <form
         className="h-full w-full flex flex-col gap-1 p-1 font-normal tracking-wider font-serif"
         onSubmit={handleSubmit(onSubmit)}

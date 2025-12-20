@@ -10,7 +10,7 @@ function Header() {
       {isOpen && (
         <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm justify-center w-full flex items-center">
           <div
-            className="w-96 rounded-lg"
+            className="w-96"
             onClick={(e) => e.stopPropagation}
           >
             <div

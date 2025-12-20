@@ -9,12 +9,25 @@ export async function addmemory(formdata: FormFields) {
   if (!session) {
     throw new Error("Not authenticated");
   }
+  function convertToYouTubeEmbed(link : string) {
+    const regex = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/|youtube\.com\/shorts\/)([^"&?\/\s]{11})/i;
+    
+    const match = link.match(regex);
+
+    if (match && match[1]) {
+        const videoId = match[1];
+        return `https://www.youtube.com/embed/${videoId}`;
+    }
+
+    return null;
+}
   const userId = session.user.id;
   const validated = memoryschema.safeParse(formdata);
   if (!validated.success) {
     throw new Error("invalid form data");
   }
   const { title, description, link, type, tags } = validated.data;
+  const url = convertToYouTubeEmbed(link) ;
   const tagslist = tags
     .split(",")
     .map((tag) => tag.trim())
@@ -24,7 +37,7 @@ export async function addmemory(formdata: FormFields) {
       data: {
         title: title.trim(),
         content: description.trim(),
-        link: link || null,
+        link: url || null,
         tags: tagslist,
         type: type,
         userId,
@@ -34,5 +47,24 @@ export async function addmemory(formdata: FormFields) {
   } catch (error) {
     console.error("failed to create memory", error);
     throw new Error("failed to save memory");
+  }
+}
+
+export async function deletememory(id : string) {
+  const session = await auth.api.getSession({ headers: await headers() });
+  if (!session) {
+    throw new Error("Not authenticated");
+  }
+  const userId = session.user.id;
+  try {
+    await client.memory.delete({
+      where : {userId ,
+      id ,
+      }
+    })
+  }
+  catch(error) {
+     console.error(error.message);
+     throw new Error("deletion failed");
   }
 }

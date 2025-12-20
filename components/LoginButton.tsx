@@ -1,5 +1,6 @@
 "use client" ;
 import { authClient } from "@/lib/auth-client";
+import { Button } from "./ui/button";
 const LoginButton = () => {
   const handleLogin = async () => {
     await authClient.signIn.social({
@@ -8,9 +9,9 @@ const LoginButton = () => {
     });
   };
   return (
-    <button onClick={handleLogin} className="text-white bg-gray-900 p-4 rounded-full hover:bg-white hover:text-black cursor-pointer">
+    <Button onClick={handleLogin} className="px-4 py-2">
       Login
-    </button>
+    </Button>
   );
 };
 
