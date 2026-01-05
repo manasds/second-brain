@@ -28,7 +28,7 @@ function Deletebutton({id} : {id : string}) {
  return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
-        <Button className="size-8 cursor-pointer bg-neutral-200 shadow-[0_3px_10px_rgb(0,0,0,0.2)]" variant="outline"><RiDeleteBin6Line className='text-red-500' /></Button>
+        <Button className="size-8 cursor-pointer  shadow-[0_3px_10px_rgb(0,0,0,0.2)] hover:scale-95 transition-transform duration-200 ease-in-out ring-1 ring-gray-400" variant="outline"><RiDeleteBin6Line className='text-red-500' /></Button>
       </AlertDialogTrigger>
       <AlertDialogContent className='bg-neutral-100'>
         <AlertDialogHeader>

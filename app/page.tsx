@@ -23,7 +23,7 @@ export default async function Home() {
     });
     console.log(cards);
     return (
-      <div className="min-w-0 h-full bg-neutral-200 pl-64 text-black">
+      <div className="min-w-0 h-full bg-slate-50 pl-64 text-black">
         <Header />
         <div className="w-full flex-1 flex flex-col items-center gap-8 pt-8 ">
           {/* <Card

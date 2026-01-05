@@ -21,7 +21,7 @@ function Header() {
           </div>
         </div>
       )}
-      <header className="flex justify-between p-3.5">
+      <header className="flex justify-between p-3.5 border-b-2 border-gray-300">
         <h1 className="font-medium ml-3.5">All notes</h1>
         <div className="flex justify-between gap-2.5">
           <button className="text-violet-800 bg-violet-200 px-5  py-2 rounded-md flex items-center gap-2 hover:bg-violet-300 cursor-pointer">

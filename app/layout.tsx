@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono ,Inter } from "next/font/google";
 import "./globals.css";
 import Sidebar from "@/components/Sidebar";
 import { auth } from "@/lib/auth";
@@ -13,6 +13,11 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
+
+const inter = Inter({
+  variable : "--font-inter" ,
+  subsets : ["latin"] , 
+})
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -31,10 +36,10 @@ export default async function RootLayout({
     return (
       <html lang="en">
         <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased flex min-h-screen bg-neutral-100 relative`}
+          className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} antialiased flex min-h-screen bg-neutral-100 relative`}
         >
           <Sidebar />
-          <main className="flex-1 overflow-y-auto">{children}</main>
+          <main className="flex-1 overflow-y-auto font-inter">{children}</main>
         </body>
       </html>
     );
