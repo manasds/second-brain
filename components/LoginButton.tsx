@@ -9,8 +9,8 @@ const LoginButton = () => {
     });
   };
   return (
-    <Button onClick={handleLogin} className="px-4 py-2">
-      Login
+    <Button onClick={handleLogin} className="text-white text-md px-8 py-2 bg-black rounded-lg relative shadow-md shadow-cyan-600 ">
+      Sign Up 
     </Button>
   );
 };

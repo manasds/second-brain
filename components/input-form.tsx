@@ -34,30 +34,31 @@ function Form({setisOpen} : {setisOpen : (arg : boolean ) => void }) {
      }
   }
   return (
-    <div className="h-full flex flex-col p-1 bg-neutral-200 rounded-lg">
+    <div className="h-full flex flex-col p-1 bg-white rounded-lg">
       <form
         className="h-full w-full flex flex-col gap-1 p-1 font-normal tracking-wider font-serif"
         onSubmit={handleSubmit(onSubmit)}
       >
-        <label>title</label>
-        <input className="bg-neutral-100 py-2 px-1 rounded-md" {...register("title")} />
+        <label className="text-neutral-500">Title</label>
+        <input className="bg-white py-2 px-1 rounded-md border-2 border-neutral-200 " placeholder="backend playlist" {...register("title")} />
         {errors.title && (
-          <div className="text-red-500 font-sans">{errors.title.message}</div>
+          <div className="text-red-500 font-sans text-xs">{errors.title.message}</div>
         )}
         <label>description</label>
         <textarea
-          className="bg-neutral-100 py-2 px-1 min-h-16 resize-none rounded-md "
+          className="bg-white py-2 px-1 min-h-16 resize-none rounded-md border-2 border-neutral-200  "
           {...register("description")}
+          placeholder="this playlist is about backend from first principles"
         />
         {errors.description && (
-          <div className="text-red-500 font-sans ">
+          <div className="text-red-500 font-sans text-xs ">
             {errors.description.message}
           </div>
         )}
         <label>link</label>
-        <input className="bg-neutral-100 py-2 px-1 rounded-md" {...register("link")} />
+        <input className="bg-white py-2 px-1 rounded-md border-2 border-neutral-200" {...register("link")} placeholder="youtube.com/v?=ashref" />
         {errors.link && (
-          <div className="text-red-500 font-sans">{errors.link.message}</div>
+          <div className="text-red-500 font-sans text-xs">{errors.link.message}</div>
         )}
         <label>type</label>
         <select className="py-2 border border-black rounded-md" {...register("type")}>
@@ -67,12 +68,12 @@ function Form({setisOpen} : {setisOpen : (arg : boolean ) => void }) {
           <option value="link">Link</option>
         </select>
         {errors.type && (
-          <div className="text-red-500 font-sans">{errors.type.message}</div>
+          <div className="text-red-500 font-sans text-xs">{errors.type.message}</div>
         )}
         <label>tags</label>
-        <input className="bg-neutral-100 py-2 px-1 rounded-md" {...register("tags")} />
+        <input className="bg-white py-2 px-1 rounded-md border-2 border-neutral-200 " {...register("tags")} placeholder="tech , backend , fpt " />
         {errors.tags && (
-          <div className="text-red-500 font-sans">{errors.tags.message}</div>
+          <div className="text-red-500 font-sans text-xs">{errors.tags.message}</div>
         )}
       </form>
       <button
@@ -81,7 +82,7 @@ function Form({setisOpen} : {setisOpen : (arg : boolean ) => void }) {
         onClick={handleSubmit(onSubmit)}
         disabled = {loading}
       >
-        {loading ? "submitting" : "Submit"}
+        {loading ? "Creating..." : "Create"}
       </button>
     </div>
   );
